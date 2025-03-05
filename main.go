@@ -11,7 +11,7 @@ import (
 )
 
 type Movie struct {
-	// json is used to describe the struct tag so that that can be used when converted to json format
+	// json is used to describe the struct tag so that it can be used when converted to json format
 	ID       string    `json:"id"`
 	Isbn     string    `json:"isbn"`
 	Title    string    `json:"title"`
@@ -35,7 +35,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	//same as foreach in js
 	for index, item := range movies {
 		if item.ID == params["id"] {
-			movies = append(movies[:index], movies[index+1:]...)
+			movies = append( movies[:index], movies[index+1:]...)
 			break
 		}
 	}
@@ -53,6 +53,7 @@ func getMovie(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func updateMovie(w http.ResponseWriter, r *http.Request) {
+	//doing the same as del and create
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
 	//same as foreach in js
